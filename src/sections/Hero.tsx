@@ -8,7 +8,7 @@ import SparkleIcon from '@/assets/icons/sparkle.svg';
 
 export const HeroSection = () => {
   return (
-    <div className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip">
+    <div className="py-32 md:py-38 lg:py-40 relative z-0 overflow-x-clip">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom, transparent, black_10%, black_70%, transparent)]">
         <div className="absolute inset-0 -z-30 opacity-5" style={{ backgroundImage: `url(${grainImage.src})` }}></div>
         <div className="size-[620px] hero-ring"></div>
@@ -49,7 +49,10 @@ export const HeroSection = () => {
       <div className="container">
         <div className="flex flex-col items-center">
           <Image src={memojiImage} className="size-[100px]" alt="Person peeking behind laptop" />
-          <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg">
+          <div className="mt-4 text-2xl md:text-3xl font-semibold text-white">
+            <span>Sanjay J K</span>
+          </div>
+          <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 mt-3 inline-flex items-center gap-4 rounded-lg">
             <div className="bg-green-500 size-2.5 rounded-full"></div>
             <div className="text-sm font-medium">Open to internship and job opportunities</div>
           </div>
