@@ -70,6 +70,9 @@ export const HeroSection = () => {
             <span>👋</span>
             <span className="font-semibold">Let's Connect</span>
           </button>
+          <a href="/resume.pdf" target="_blank" className="inline-flex items-center gap-2 border border-white/15 h-12 px-6 rounded-xl">
+            <span className="font-semibold">Download Resume</span>
+          </a>
         </div>
       </div>
     </div>
