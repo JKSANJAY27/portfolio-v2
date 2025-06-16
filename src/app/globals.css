@@ -29,3 +29,7 @@
 .animate-move-left {
   animation: move-left var(--animation-duration, 20s) linear infinite;
 }
+
+html {
+  scroll-behavior: smooth;
+}

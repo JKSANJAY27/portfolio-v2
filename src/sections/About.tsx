@@ -40,7 +40,7 @@ const toolboxItems = [
 
 export const AboutSection = () => {
   return (
-    <div className="py-20">
+    <div id="about" className="py-20">
       <div className="container mx-auto px-4">
         <SectionHeader
           eyebrow="About Me"
