@@ -69,7 +69,7 @@ export const HeroSection = () => {
         </div>
         <div className="max-w-lg mx-auto">
           <h1 className="font-serif text-3xl md:text-5xl text-center mt-8 tracking-wide">Creating Impactful Technology Solutions</h1>
-          <p className="mt-4 text-center text-white/60 md:text-lg">I’m a computer science undergraduate passionate about building smart, efficient, and user-centered software. From web development to AI/ML, I'm eager to contribute to innovative projects across various domains. Let’s connect and explore how I can add value to your team.</p>
+          <p className="mt-4 text-center text-white/60 md:text-lg">I&rsquo;m a computer science undergraduate passionate about building smart, efficient, and user-centered software. From web development to AI/ML, I&rsquo;m eager to contribute to innovative projects across various domains. Let&rsquo;s connect and explore how I can add value to your team.</p>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center mt-8 gap-4">
           <button onClick={() => scrollToSection('projects')} className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl">
@@ -78,7 +78,7 @@ export const HeroSection = () => {
           </button>
           <button onClick={() => scrollToSection('contact')} className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
             <span>👋</span>
-            <span className="font-semibold">Let's Connect</span>
+            <span className="font-semibold">Let&rsquo;s Connect</span>
           </button>
           <a href="/resume.pdf" target="_blank" className="inline-flex z-0 items-center gap-2 border border-white/15 h-12 px-6 rounded-xl">
             <span className="font-semibold">Download Resume</span>

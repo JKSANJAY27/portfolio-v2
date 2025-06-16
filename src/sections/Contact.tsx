@@ -11,7 +11,7 @@ export const ContactSection = () => {
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div>
               <h2 className="font-serif text-2xl md:text-3xl">Open to Internships, Jobs & Collaborations</h2>
-              <p className="text-sm mt-2 md:text-base">I'm actively seeking internship or job opportunities in frontend development, AI/ML, or research. Passionate about building practical, high-impact solutions — let’s connect and create something meaningful together.</p>
+              <p className="text-sm mt-2 md:text-base">I&rsquo;m actively seeking internship or job opportunities in frontend development, AI/ML, or research. Passionate about building practical, high-impact solutions — let&rsquo;s connect and create something meaningful together.</p>
             </div>
             <div>
               <a href="mailto:j.k.sanjay2006@gmail.com" className="text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl gap-2 mt-8 w-max border border-gray-900">
