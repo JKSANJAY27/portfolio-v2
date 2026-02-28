@@ -1,129 +1,168 @@
-import collaborativedocs from "@/assets/images/collaborativedocs.png";
-import dialingo from "@/assets/images/dialingo.png";
-import basketball from "@/assets/images/basketball.png";
-import smartcalculator from "@/assets/images/smartcalculator.png";
-import medical from "@/assets/images/medical.png";
-import mlproject from "@/assets/images/mlproject.jpg";
-import Image from "next/image";
-import CheckCircleIcon from "@/assets/icons/check-circle.svg";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import { SectionHeader } from "@/components/SectionHeader";
-import { Card } from "@/components/Card";
+'use client';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import TiltedCard from '@/components/animations/TiltedCard';
 
 const portfolioProjects = [
   {
-    company: "Personal Project",
-    year: "2024",
-    title: "Collaborative Docs",
+    category: 'Full Stack',
+    year: '2025',
+    title: 'Language Exchange Platform',
+    subtitle: 'Dialingo',
+    description: 'Global platform for 1-on-1 and group video calls with JWT authentication, messaging, and screen sharing. Supports 30+ UI themes enabling cross-cultural collaboration.',
     results: [
-      { title: "Built real-time collaborative editing with Liveblocks" },
-      { title: "Integrated custom editor using TipTap with extensions" },
-      { title: "Implemented user/organisation management with Clerk & Convex" },
+      '1-on-1 & group video calls via WebRTC',
+      'JWT auth + real-time messaging',
+      '30+ UI themes, Zustand state management',
+      'TanStack Query for seamless data fetching',
     ],
-    link: "https://collaborative-docs-fqd7.vercel.app/",
-    image: collaborativedocs,
+    stack: ['React', 'Express.js', 'MongoDB', 'WebRTC', 'Zustand'],
+    link: 'https://dialingo.onrender.com/',
+    github: 'https://github.com/JKSANJAY27',
+    image: '/projects/dialingo.png',
+    color: 'from-violet-600 to-cyan-500',
   },
   {
-    company: "Personal Project",
-    year: "2025",
-    title: "Dialingo",
+    category: 'Full Stack',
+    year: '2024',
+    title: 'Collaborative Docs',
+    subtitle: 'Real-time Document Editing',
+    description: 'Real-time document collaboration tool with team creation, shared editing, and access control. Reduced turnaround time by 30% for 50+ student teams.',
     results: [
-      { title: "Enabled real-time messaging & video calling" },
-      { title: "Integrated 32 custom UI themes for personalization" },
-      { title: "Implemented JWT auth, Zustand state, and screen sharing" },
+      'Real-time multi-user editing with Convex',
+      'Team creation & access control',
+      'Next.js SSR/ISR for optimal performance',
+      '30% faster turnaround for 50+ teams',
     ],
-    link: "https://dialingo.onrender.com/",
-    image: dialingo,
+    stack: ['Next.js', 'Convex', 'TailwindCSS', 'TypeScript'],
+    link: 'https://collaborative-docs-fqd7.vercel.app/',
+    github: 'https://github.com/JKSANJAY27',
+    image: '/projects/collaborativedocs.png',
+    color: 'from-emerald-600 to-cyan-500',
   },
   {
-    company: "Research Project",
-    year: "2025",
-    title: "Basketball Video Analysis",
+    category: 'Research / ML',
+    year: '2025',
+    title: 'Basketball Video Analysis',
+    subtitle: 'Computer Vision Pipeline',
+    description: 'Player & ball detection using YOLO models with real-time court overlays and team assignment via zero-shot learning.',
     results: [
-      { title: "Built player & ball detection using YOLO models" },
-      { title: "Developed real-time court overlays & event detection" },
-      { title: "Implemented team assignment using zero-shot learning" },
+      'YOLO-based player & ball detection',
+      'Real-time court overlays & event detection',
+      'Zero-shot team assignment learning',
+      'Live performance analytics dashboard',
     ],
-    link: "https://github.com/JKSANJAY27/Basketball-Analysis",
-    image: basketball,
-  },
-  {
-    company: "Personal Project",
-    year: "2024",
-    title: "AI Smart Calculator",
-    results: [
-      { title: "Recognizes handwritten math via AI-powered canvas" },
-      { title: "Supports complex calculations with real-time feedback" },
-      { title: "Inspired by Apple Notes’ intuitive math input" },
-    ],
-    link: "https://github.com/JKSANJAY27/Smart-Calculator",
-    image: smartcalculator,
-  },
-  {
-    company: "Hackathon Project",
-    year: "2024",
-    title: "AI Medical Analysis Dashboard",
-    results: [
-      { title: "Built chatbot for querying patient records with Gemini AI" },
-      { title: "Visualized screenings and risk scores with dashboards" },
-      { title: "Implemented Kanban, auth, and form digitization" },
-    ],
-    link: "https://github.com/karthicksaai/Medical",
-    image: medical,
-  },
-  {
-    company: "ML Project",
-    year: "2025",
-    title: "Employee Attrition Prediction",
-    results: [
-      { title: "Achieved 97.9% accuracy using Random Forest" },
-      { title: "Visualized feature importance with Plotly and seaborn" },
-      { title: "Applied SMOTE for class balancing and RFE for selection" },
-    ],
-    link: "https://github.com/JKSANJAY27/Employee-Turnover-and-Employee-Prediction-Models",
-    image: mlproject,
+    stack: ['Python', 'YOLO', 'OpenCV', 'PyTorch'],
+    link: 'https://github.com/JKSANJAY27/Basketball-Analysis',
+    github: 'https://github.com/JKSANJAY27/Basketball-Analysis',
+    image: '/projects/basketball.png',
+    color: 'from-orange-600 to-yellow-500',
   },
 ];
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="pb-16 lg:py-24">
+    <section id="projects" className="py-20 lg:py-32">
       <div className="container">
-        <SectionHeader eyebrow="Real-world Results" title="Featured Projects" description="Explore how I've brought ideas to life through collaborative apps, AI analysis, and full-stack solutions." />
-        <div className="flex flex-col mt-10 md:mt-20 gap-20">
-          {portfolioProjects.map((project, projectIndex) => (
-            <Card key={project.title} className="px-8 pt-8 pb-0 md:pt-12 lg:pt-16 lg:px-20 md:px-10 sticky" style={{
-              top: `calc(64px + ${projectIndex*10}px)`,
-            }}>
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                <div className="lg:pb-16">
-                  <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 font-bold uppercase tracking-widest text-sm text-transparent bg-clip-text">
-                    <span>{project.company}</span>
-                    <span>&bull;</span>
-                    <span>{project.year}</span>
-                  </div>
-                  <h3 className="font-serif text-2xl mt-2 md:mt-5 md:text-4xl">{project.title}</h3>
-                  <hr className="border-t-2 border-white/5 mt-4 md:mt-5" />
-                  <ul className="flex flex-col gap-4 mt-4 md:mt-5">
-                    {project.results.map(result => (
-                      <li key={result.title} className="flex gap-2 text-sm md:text-base text-white/50">
-                        <CheckCircleIcon className="size-5 md:size-6" />
-                        <span>{result.title}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href={project.link} target="_blank">
-                    <button className="bg-white text-gray-950 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8">
-                      <span>Check It Out!</span>
-                      <ArrowUpRightIcon className="size-4" />
-                    </button>
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 tech-badge mb-4">
+            <span className="size-1.5 rounded-full bg-violet-400" />
+            Real-world Results
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold mt-2">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+          <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm md:text-base">
+            From collaborative apps to AI pipelines — building tools that people actually use.
+          </p>
+        </motion.div>
+
+        {/* Projects grid */}
+        <div className="flex flex-col gap-24">
+          {portfolioProjects.map((project, idx) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${idx % 2 === 1 ? 'lg:[&>:first-child]:order-2' : ''}`}
+            >
+              {/* Content */}
+              <div className="flex flex-col gap-5">
+                <div className="flex items-center gap-3">
+                  <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
+                    {project.category}
+                  </span>
+                  <span className="text-xs text-white/30 font-mono">{project.year}</span>
+                </div>
+
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{project.title}</h3>
+                  <p className="text-white/50 text-sm mt-1 font-medium">{project.subtitle}</p>
+                </div>
+
+                <p className="text-white/60 text-sm leading-relaxed">{project.description}</p>
+
+                <ul className="flex flex-col gap-2">
+                  {project.results.map(r => (
+                    <li key={r} className="flex items-start gap-2.5 text-sm text-white/70">
+                      <span className={`mt-1 size-1.5 rounded-full flex-shrink-0 bg-gradient-to-r ${project.color}`} />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map(t => (
+                    <span key={t} className="tech-badge">{t}</span>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div className="flex gap-3">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    className="cursor-target inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-[0_0_20px_rgba(124,58,237,0.4)] hover:shadow-[0_0_28px_rgba(124,58,237,0.6)] hover:scale-105 transition-all duration-300"
+                  >
+                    View Live ↗
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    className="cursor-target inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                  >
+                    <svg className="size-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                    GitHub
                   </a>
                 </div>
-                <div className="relative">
-                  <Image src={project.image} alt={project.title} className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none" />
-                </div>
               </div>
-            </Card>
+
+              {/* Image with TiltedCard */}
+              <div className="relative w-full h-[300px] md:h-[400px]">
+                <TiltedCard
+                  imageSrc={project.image}
+                  altText={project.title}
+                  captionText={project.title}
+                  containerHeight="100%"
+                  containerWidth="100%"
+                  imageHeight="100%"
+                  imageWidth="100%"
+                  rotateAmplitude={12}
+                  scaleOnHover={1.05}
+                  showTooltip={true}
+                />
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

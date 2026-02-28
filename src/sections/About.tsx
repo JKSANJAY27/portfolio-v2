@@ -1,137 +1,272 @@
-import { Card } from "@/components/Card";
-import { SectionHeader } from "@/components/SectionHeader";
-import JavaScriptIcon from "@/assets/icons/square-js.svg";
-import NextjsIcon from "@/assets/icons/nextjs.svg";
-import ReactIcon from "@/assets/icons/react.svg";
-import PythonIcon from "@/assets/icons/python.svg";
-import MongodbIcon from "@/assets/icons/mongodb.svg";
-import GithubIcon from "@/assets/icons/github.svg";
-import { CardHeader } from "@/components/CardHeader";
-import { ToolboxItems } from "@/components/ToolboxItems";
-import Image from "next/image";
-import ukieri from "@/assets/images/ukieri.jpeg";
+'use client';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
-const toolboxItems = [
+const SmoothTab = dynamic(() => import('@/components/kokonutui/smooth-tab'), { ssr: false });
+
+const techCategories = [
   {
-    title: 'JavaScript',
-    iconType: JavaScriptIcon,
+    label: 'Languages',
+    items: ['C++', 'C', 'Java', 'Python', 'JavaScript'],
+    color: 'violet',
   },
   {
-    title: 'React',
-    iconType: ReactIcon,
+    label: 'Frontend',
+    items: ['React', 'Next.js', 'TailwindCSS', 'HTML/CSS', 'TypeScript'],
+    color: 'cyan',
   },
   {
-    title: 'Next.js',
-    iconType: NextjsIcon,
+    label: 'Backend',
+    items: ['Node.js', 'Express.js', 'REST APIs', 'WebRTC', 'JWT Auth'],
+    color: 'emerald',
   },
   {
-    title: 'MongoDB',
-    iconType: MongodbIcon,
+    label: 'Databases',
+    items: ['MongoDB', 'PostgreSQL', 'SQL'],
+    color: 'violet',
   },
   {
-    title: 'Python',
-    iconType: PythonIcon,
+    label: 'Tools',
+    items: ['Git', 'GitHub', 'Zustand', 'TanStack Query', 'Convex'],
+    color: 'cyan',
   },
   {
-    title: 'Git & GitHub',
-    iconType: GithubIcon,
+    label: 'AI/ML',
+    items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'ViT', 'Detectron2', 'Mask R-CNN'],
+    color: 'emerald',
+  },
+];
+
+const experiences = [
+  {
+    role: 'Frontend Developer Intern',
+    company: 'Valsco Technology',
+    period: 'Jun 2024 – Sep 2024',
+    type: 'Remote',
+    bullets: [
+      'Built and deployed NoteSwap, a ReactJS platform used by 200+ students',
+      'Reduced manual note exchange by 70% and optimized performance by 20%',
+      'Improved user retention by 15% across 1,000+ active sessions',
+      'Delivered responsive, production-ready UI components',
+    ],
+  },
+];
+
+const colorMap: Record<string, string> = {
+  violet: 'bg-violet-500/10 border-violet-500/20 text-violet-300 hover:bg-violet-500/20 hover:border-violet-500/40',
+  cyan: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-500/40',
+  emerald: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-500/40',
+};
+
+const SummaryTab = () => (
+  <div className="relative h-full">
+    <div className="absolute inset-0 overflow-hidden rounded-lg">
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-violet-500/5 to-transparent" />
+    </div>
+    <div className="relative flex flex-col p-6 h-full">
+      <h3 className="font-display text-xl font-bold text-white mb-3 flex items-center gap-2">
+        <span>👨‍💻</span> Professional Summary
+      </h3>
+      <p className="text-white/70 text-sm leading-relaxed mb-3">
+        Computer Science student at <span className="text-violet-400 font-semibold">VIT (CGPA 9.45)</span> with proven experience
+        in full-stack development, AI/ML, and scalable software engineering.
+      </p>
+      <p className="text-white/60 text-sm leading-relaxed mb-4">
+        Designed and deployed applications adopted by <span className="text-white font-medium">200+ users</span>,
+        improved system performance by <span className="text-white font-medium">20%</span>,
+        and increased collaboration efficiency by <span className="text-white font-medium">30%</span>.
+        Currently pursuing research in multimodal AI.
+      </p>
+      <div className="mt-auto grid grid-cols-3 gap-3">
+        {[
+          { val: '9.45', label: 'CGPA at VIT' },
+          { val: '200+', label: 'Users Impacted' },
+          { val: '2027', label: 'Expected Grad' },
+        ].map(s => (
+          <div key={s.label} className="text-center p-2.5 rounded-xl bg-white/3 border border-white/5">
+            <div className="text-lg font-bold text-gradient font-mono">{s.val}</div>
+            <div className="text-[10px] text-white/40 mt-1">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const ExperienceTab = () => (
+  <div className="relative h-full">
+    <div className="absolute inset-0 overflow-hidden rounded-lg">
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-cyan-500/5 to-transparent" />
+    </div>
+    <div className="relative flex flex-col p-6 h-full overflow-y-auto">
+      <h3 className="font-display text-xl font-bold text-white mb-4 flex items-center gap-2">
+        <span>💼</span> Experience
+      </h3>
+      {experiences.map(exp => (
+        <div key={exp.role}>
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <h4 className="font-semibold text-white text-sm">{exp.role}</h4>
+              <p className="text-violet-400 font-medium text-xs mt-0.5">{exp.company}</p>
+            </div>
+            <div className="text-right">
+              <span className="text-xs font-mono text-white/50">{exp.period}</span>
+              <div className="mt-1">
+                <span className="tech-badge text-[10px]">{exp.type}</span>
+              </div>
+            </div>
+          </div>
+          <ul className="mt-3 flex flex-col gap-1.5">
+            {exp.bullets.map(b => (
+              <li key={b} className="flex items-start gap-2 text-xs text-white/60">
+                <span className="mt-1 size-1.5 rounded-full bg-violet-500 flex-shrink-0" />
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const SkillsTab = () => (
+  <div className="relative h-full">
+    <div className="absolute inset-0 overflow-hidden rounded-lg">
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-emerald-500/5 to-transparent" />
+    </div>
+    <div className="relative flex flex-col p-6 h-full overflow-y-auto">
+      <h3 className="font-display text-xl font-bold text-white mb-4 flex items-center gap-2">
+        <span>⚡</span> Technical Skills
+      </h3>
+      <div className="grid grid-cols-2 gap-3">
+        {techCategories.map(cat => (
+          <div key={cat.label}>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1.5">{cat.label}</div>
+            <div className="flex flex-wrap gap-1">
+              {cat.items.map(item => (
+                <span key={item} className={`text-[11px] px-2 py-0.5 rounded-full border font-medium transition-all duration-200 ${colorMap[cat.color]}`}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const EducationTab = () => (
+  <div className="relative h-full">
+    <div className="absolute inset-0 overflow-hidden rounded-lg">
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-amber-500/5 to-transparent" />
+    </div>
+    <div className="relative flex flex-col p-6 h-full">
+      <h3 className="font-display text-xl font-bold text-white mb-4 flex items-center gap-2">
+        <span>🎓</span> Education
+      </h3>
+      <div className="space-y-3 mb-6">
+        <div className="p-3 rounded-xl bg-violet-600/10 border border-violet-500/20">
+          <p className="font-semibold text-sm text-white">B.Tech — Computer Science</p>
+          <p className="text-violet-400 text-xs mt-0.5 font-medium">Vellore Institute of Technology</p>
+          <div className="flex items-center justify-between mt-2">
+            <span className="text-xs text-white/40 font-mono">2023 – 2027</span>
+            <span className="text-xs font-bold text-emerald-400 font-mono">CGPA: 9.45</span>
+          </div>
+        </div>
+        <div className="p-3 rounded-xl bg-white/3 border border-white/8">
+          <p className="font-semibold text-sm text-white">High School (CBSE)</p>
+          <div className="flex items-center justify-between mt-1">
+            <span className="text-xs text-white/40">Class XII</span>
+            <span className="text-xs font-bold text-cyan-400 font-mono">Score: 93.5%</span>
+          </div>
+        </div>
+      </div>
+      <h3 className="font-display text-lg font-bold text-white mb-3 flex items-center gap-2">
+        <span>🔗</span> Connect
+      </h3>
+      <div className="flex flex-col gap-1.5">
+        {[
+          { label: 'GitHub', href: 'https://github.com/JKSANJAY27', icon: '⌨️' },
+          { label: 'LinkedIn', href: 'https://linkedin.com/in/sanjay-j-k', icon: '💼' },
+          { label: 'Email', href: 'mailto:j.k.sanjay2006@gmail.com', icon: '✉️' },
+        ].map(link => (
+          <a key={link.label} href={link.href} target="_blank"
+            className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/3 border border-white/5 hover:bg-white/8 hover:border-white/15 transition-all duration-200 text-xs text-white/70 hover:text-white">
+            <span className="text-sm">{link.icon}</span>
+            <span className="font-medium">{link.label}</span>
+            <span className="ml-auto text-[10px] text-white/30">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const aboutTabs = [
+  {
+    id: 'summary',
+    title: 'Summary',
+    color: 'bg-violet-600 hover:bg-violet-700',
+    cardContent: <SummaryTab />,
+  },
+  {
+    id: 'experience',
+    title: 'Experience',
+    color: 'bg-cyan-600 hover:bg-cyan-700',
+    cardContent: <ExperienceTab />,
+  },
+  {
+    id: 'skills',
+    title: 'Skills',
+    color: 'bg-emerald-600 hover:bg-emerald-700',
+    cardContent: <SkillsTab />,
+  },
+  {
+    id: 'education',
+    title: 'Education',
+    color: 'bg-amber-500 hover:bg-amber-600',
+    cardContent: <EducationTab />,
   },
 ];
 
 export const AboutSection = () => {
   return (
-    <div id="about" className="py-20">
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          eyebrow="About Me"
-          title="A Glimpse Into My World"
-          description="Learn more about who I am, what I do, and what inspires me."
-        />
-        
-        {/* Grid Layout */}
-        <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          
-          {/* Top Left: Internship Experience */}
-          <Card className="lg:col-span-1 p-8 min-h-[300px] flex flex-col">
-            <CardHeader 
-              title="Internship Experience" 
-              description="Frontend Developer Intern at Valsco Technology. Built platforms like NoteSwap and School Alumni Portal using ReactJS, improving performance and user experience. Implemented dynamic components, reduced load times by 20%, and collaborated closely with the backend team to ship scalable features." 
-            />
-          </Card>
+    <section id="about" className="py-20 lg:py-32">
+      <div className="container">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 tech-badge mb-4">
+            <span className="size-1.5 rounded-full bg-cyan-400" />
+            About Me
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold mt-2">
+            A Glimpse Into <span className="text-gradient">My World</span>
+          </h2>
+        </motion.div>
 
-          {/* Top Right: Technical Toolkit */}
-          <Card className="lg:col-span-1 p-8 min-h-[300px] flex flex-col">
-            <CardHeader 
-              title="My Technical Toolkit" 
-              description="Technologies and tools I regularly use to build performant and scalable software." 
-            />
-            <div className="mt-6 flex-1 flex items-center">
-              <ToolboxItems items={toolboxItems} />
-            </div>
-          </Card>
-
-          {/* Bottom Left: Problem Solver's Mindset */}
-          <Card className="lg:col-span-1 p-8 min-h-[400px] flex flex-col">
-            <CardHeader 
-              title="Problem Solver's Mindset" 
-              description="Whether building collaborative tools or analyzing lab data, I approach challenges with curiosity, structure, and a focus on real-world impact." 
-            />
-            <div className="mt-6 flex-1 flex flex-col justify-center">
-  <div className="aspect-video w-full rounded-lg overflow-hidden">
-    <Image 
-      src={ukieri} 
-      alt="UKIERI Project" 
-      className="w-full h-full object-contain"
-    />
-  </div>
-</div>
-          </Card>
-
-          {/* Bottom Right: Social Profiles */}
-          <Card className="lg:col-span-1 p-8 min-h-[400px] flex flex-col">
-            <CardHeader 
-              title="Social Profiles" 
-              description="Get in touch or explore more of my work:" 
-            />
-            <div className="mt-6 flex-1 flex flex-col justify-center space-y-3">
-              <a href="https://github.com/JKSANJAY27" target="_blank" 
-                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group">
-                <GithubIcon className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" />
-                <span className="text-white/80 group-hover:text-white transition-colors">GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/sanjay-j-k/" target="_blank" 
-                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group">
-                <svg className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span className="text-white/80 group-hover:text-white transition-colors">LinkedIn</span>
-              </a>
-              <a href="https://leetcode.com/u/SanjayJK/" target="_blank" 
-                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group">
-                <svg className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                </svg>
-                <span className="text-white/80 group-hover:text-white transition-colors">LeetCode</span>
-              </a>
-              <a href="https://instagram.com/j.k.sanjay" target="_blank" 
-                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group">
-                <svg className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                <span className="text-white/80 group-hover:text-white transition-colors">Instagram</span>
-              </a>
-              <a href="mailto:j.k.sanjay2006@gmail.com" 
-                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group">
-                <svg className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <span className="text-white/80 group-hover:text-white transition-colors">Email</span>
-              </a>
-            </div>
-          </Card>
-
-        </div>
+        {/* Tabbed content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-2xl mx-auto"
+        >
+          <SmoothTab
+            items={aboutTabs}
+            defaultTabId="summary"
+            activeColor="bg-violet-600"
+          />
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };

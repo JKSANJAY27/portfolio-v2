@@ -1,41 +1,44 @@
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-
-const footerLinks = [
-  {
-    title: 'LinkedIn',
-    href: "https://www.linkedin.com/in/sanjay-j-k/",
-  },
-  {
-    title: 'Github',
-    href: "https://github.com/JKSANJAY27",
-  },
-  {
-    title: 'Instagram',
-    href: "https://instagram.com/j.k.sanjay",
-  },
-  {
-    title: 'Email',
-    href: "mailto:j.k.sanjay2006@gmail.com",
-  },
-]
-
 export const Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <footer className="relative z-10 overflow-x-clip">
-      <div className="absolute h-[400px] w-[1600px] bottom-0 pointer-events-none left-1/2 -translate-x-1/2 bg-emerald-300/30 [mask-image:radial-gradient(50%_50%_at_bottom_center,black,transparent)] -z-10"></div>
-      <div className="container">
-        <div className="border-t border-white/15 py-6 text-sm flex flex-col md:flex-row md:justify-between items-center gap-8">
-          <div className="text-white/40">&copy; {new Date().getFullYear()}. All rights reserved.</div>
-          <nav className="flex flex-col md:flex-row items-center gap-8">
-            {footerLinks.map(link=>(
-              <a href={link.href} target="_blank" key={link.title} className="inline-flex items-center gap-1.5">
-                <span className="font-semibold">{link.title}</span>
-                <ArrowUpRightIcon className="size-4" />
-              </a>
-            ))}
-          </nav>
+    <footer className="relative py-10 border-t border-white/6 overflow-hidden">
+      <div className="absolute inset-0 grid-dots opacity-20 pointer-events-none" />
+      <div className="container relative flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Brand */}
+        <div className="flex items-center gap-3">
+          <div className="size-8 rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center text-white font-bold text-sm shadow-[0_0_20px_rgba(124,58,237,0.3)]">
+            SJ
+          </div>
+          <div>
+            <p className="font-display font-semibold text-white/90 text-sm">Sanjay J K</p>
+            <p className="text-[10px] text-white/35 font-mono">CS @ VIT • Vellore, India</p>
+          </div>
+        </div>
+
+        {/* Center: copyright */}
+        <p className="text-xs text-white/35 order-3 md:order-2">
+          © {year} Sanjay J K. Crafted with ❤️ using Next.js
+        </p>
+
+        {/* Social links */}
+        <div className="flex items-center gap-3 order-2 md:order-3">
+          {[
+            { label: 'GH', href: 'https://github.com/JKSANJAY27', title: 'GitHub' },
+            { label: 'LI', href: 'https://linkedin.com/in/sanjay-j-k', title: 'LinkedIn' },
+            { label: 'LC', href: 'https://leetcode.com/u/SanjayJK/', title: 'LeetCode' },
+          ].map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              title={link.title}
+              className="cursor-target size-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-[10px] font-bold text-white/50 hover:text-white hover:bg-white/10 hover:border-white/15 hover:scale-110 transition-all duration-200"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
-  )
+  );
 };

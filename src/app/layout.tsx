@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import {Inter, Calistoga} from 'next/font/google';
 import "./globals.css";
-import { twMerge } from "tailwind-merge";
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans'
-});
-
-const calistoga = Calistoga({
-  subsets: ['latin'],
-  variable: '--font-serif',
-  weight: ['400'],
-});
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Created with the help of Frontend Tribe",
+  title: "Sanjay J K — Full Stack Developer & AI Researcher",
+  description: "CS Student at VIT (CGPA 9.45) — Full Stack Developer, AI/ML Researcher, UKIERI 2025 Scholar. Passionate about building scalable software and impactful AI systems.",
+  keywords: ["Sanjay J K", "Full Stack Developer", "AI Researcher", "VIT", "Portfolio", "React", "Next.js"],
+  authors: [{ name: "Sanjay J K" }],
+  openGraph: {
+    title: "Sanjay J K — Full Stack Developer & AI Researcher",
+    description: "CS Student at VIT building scalable apps and multimodal AI systems.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,8 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={twMerge(inter.variable, calistoga.variable,"bg-gray-900 text-white antialiased font-sans")}>{children}</body>
+    <html lang="en" className="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="antialiased bg-[#050816] text-white">
+        {children}
+      </body>
     </html>
   );
 }
