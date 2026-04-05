@@ -11,6 +11,26 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ];
 
+/* Three-shape Bauhaus logo mark */
+const BauhausLogo = () => (
+  <div className="flex items-center gap-0.5 relative">
+    {/* Red circle */}
+    <div className="w-4 h-4 rounded-full bg-[#D02020] border-2 border-[#121212] flex-shrink-0" />
+    {/* Blue square */}
+    <div className="w-4 h-4 bg-[#1040C0] border-2 border-[#121212] flex-shrink-0" />
+    {/* Yellow triangle */}
+    <div
+      className="w-0 h-0 flex-shrink-0"
+      style={{
+        borderLeft: '9px solid transparent',
+        borderRight: '9px solid transparent',
+        borderBottom: '16px solid #F0C020',
+        filter: 'drop-shadow(0 0 0 1px #121212)',
+      }}
+    />
+  </div>
+);
+
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,42 +69,43 @@ export const Header = () => {
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_32px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent'
-          }`}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 bg-[#F0F0F0] border-b-4 border-[#121212] transition-all duration-300 ${
+          scrolled ? 'shadow-[0_4px_0px_0px_#121212]' : ''
+        }`}
       >
-        <div className="container flex items-center justify-between h-16">
+        <div className="container flex items-center justify-between h-[72px]">
+
           {/* Logo */}
-          <button onClick={() => scrollTo('#home')} className="group flex items-center gap-2 cursor-target">
-            <div className="size-8 rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center text-white font-bold text-sm shadow-[0_0_20px_rgba(124,58,237,0.4)] group-hover:shadow-[0_0_28px_rgba(124,58,237,0.6)] transition-all duration-300">
-              SJ
-            </div>
-            <span className="font-display font-semibold text-white/90 text-sm hidden sm:block">Sanjay J K</span>
+          <button
+            onClick={() => scrollTo('#home')}
+            className="group flex items-center gap-3 cursor-pointer"
+          >
+            <BauhausLogo />
+            <span className="font-black text-[#121212] text-base uppercase tracking-wider hidden sm:block">
+              Sanjay J K
+            </span>
           </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/5 border border-white/8 rounded-full px-2 py-1.5 backdrop-blur-sm">
-            {navItems.map(item => (
-              <button
-                key={item.label}
-                onClick={() => scrollTo(item.href)}
-                className={`nav-item relative cursor-target ${activeSection === item.href.slice(1)
-                  ? 'text-white bg-white/10'
-                  : ''
-                  }`}
-              >
-                {item.label}
-                {activeSection === item.href.slice(1) && (
-                  <motion.div
-                    layoutId="nav-active"
-                    className="absolute inset-0 bg-violet-600/20 rounded-full border border-violet-500/30"
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-                  />
-                )}
-              </button>
-            ))}
+          <nav className="hidden md:flex items-center gap-0 border-2 border-[#121212]">
+            {navItems.map((item, idx) => {
+              const isActive = activeSection === item.href.slice(1);
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => scrollTo(item.href)}
+                  className={`relative px-4 py-2.5 text-sm font-bold uppercase tracking-wider transition-all duration-200
+                    ${idx < navItems.length - 1 ? 'border-r-2 border-[#121212]' : ''}
+                    ${isActive
+                      ? 'bg-[#D02020] text-white'
+                      : 'bg-transparent text-[#121212] hover:bg-[#121212] hover:text-white'
+                    }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Right side */}
@@ -92,19 +113,20 @@ export const Header = () => {
             <a
               href="/resume.pdf"
               target="_blank"
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-[0_0_20px_rgba(124,58,237,0.35)] hover:shadow-[0_0_28px_rgba(124,58,237,0.55)] transition-all duration-300 hover:scale-105 cursor-target"
+              className="hidden md:inline-flex bauhaus-btn bauhaus-btn-red text-xs"
             >
               Resume ↗
             </a>
+
+            {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(v => !v)}
-              className="md:hidden size-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:bg-white/10 transition-all"
+              className="md:hidden w-10 h-10 border-2 border-[#121212] bg-white flex flex-col items-center justify-center gap-1.5 hover:bg-[#121212] hover:text-white transition-colors duration-200 group"
+              aria-label="Toggle menu"
             >
-              <div className="flex flex-col gap-1.5 w-4">
-                <span className={`block h-0.5 bg-current transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-                <span className={`block h-0.5 bg-current transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-              </div>
+              <span className={`block w-5 h-0.5 bg-[#121212] group-hover:bg-white transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block w-5 h-0.5 bg-[#121212] group-hover:bg-white transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+              <span className={`block w-5 h-0.5 bg-[#121212] group-hover:bg-white transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
         </div>
@@ -117,24 +139,29 @@ export const Header = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:hidden"
+            transition={{ duration: 0.25 }}
+            className="fixed top-[72px] left-0 right-0 z-40 bg-[#1040C0] border-b-4 border-[#121212] md:hidden"
           >
-            <nav className="container flex flex-col py-4 gap-1">
-              {navItems.map(item => (
+            <nav className="flex flex-col">
+              {navItems.map((item, idx) => (
                 <button
                   key={item.label}
                   onClick={() => scrollTo(item.href)}
-                  className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${activeSection === item.href.slice(1)
-                    ? 'text-white bg-violet-600/20 border border-violet-500/30'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                  className={`text-left px-6 py-4 text-lg font-black uppercase tracking-wider transition-all duration-200 border-b-2 border-white/20
+                    ${activeSection === item.href.slice(1)
+                      ? 'bg-[#D02020] text-white'
+                      : 'text-white hover:bg-[#D02020]'
                     }`}
                 >
+                  <span className="text-white/40 font-mono text-sm mr-3">0{idx + 1}</span>
                   {item.label}
                 </button>
               ))}
-              <a href="/resume.pdf" target="_blank"
-                className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 text-white">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                className="mx-6 my-4 bauhaus-btn bauhaus-btn-yellow text-center justify-center border-2 border-[#121212]"
+              >
                 Download Resume ↗
               </a>
             </nav>

@@ -1,23 +1,21 @@
 'use client';
-import { motion } from 'framer-motion';
 import ScrollVelocity from '@/components/animations/ScrollVelocity';
 
 export const TapeSection = () => {
   return (
-    <div id="skills" className="py-12 overflow-hidden relative">
-      {/* Gradient fade edges */}
-      <div className="absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
-
+    <div
+      id="skills"
+      className="overflow-hidden relative bg-[#F0C020] border-b-4 border-[#121212]"
+    >
       <ScrollVelocity
         texts={[
-          'React • Next.js • Node.js • Express.js • REST APIs • WebRTC • JWT Auth • Zustand • TanStack Query',
-          'Python • PyTorch • TensorFlow • ViT • Transformer • Mask R-CNN • MongoDB • PostgreSQL • C++ • Java',
+          'AI Engineer · Software Engineer · Full Stack Developer · LLM Systems · Graph RAG · Production AI · Agent Systems · React · Next.js · Node.js · REST APIs · WebRTC',
+          'Python · PyTorch · TensorFlow · ChromaDB · Neo4j · LangChain · Ollama · Langfuse · MongoDB · PostgreSQL · C++ · Java · System Design · MLOps',
         ]}
         velocity={60}
-        className="text-white/30 text-3xl font-bold tracking-widest uppercase"
-        parallaxClassName="py-2"
-        scrollerClassName="gap-8"
+        className="text-[#121212] text-2xl font-black tracking-widest uppercase py-4"
+        parallaxClassName="py-1"
+        scrollerClassName="gap-10"
         numCopies={4}
         parallaxStyle={{ opacity: 1 }}
       />

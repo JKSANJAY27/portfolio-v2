@@ -1,24 +1,26 @@
 import { Header } from "@/sections/Header";
 import { HeroSection } from "@/sections/Hero";
-import { ProjectsSection } from "@/sections/Projects";
 import { TapeSection } from "@/sections/Tape";
+import { ProjectsSection } from "@/sections/Projects";
 import { ResearchSection } from "@/sections/Research";
-import { AchievementsSection } from "@/sections/Achievements";
 import { AboutSection } from "@/sections/About";
+import { AchievementsSection } from "@/sections/Achievements";
 import { ContactSection } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#F0F0F0]">
       <Header />
-      <HeroSection />
-      <TapeSection />
-      <ProjectsSection />
-      <ResearchSection />
-      <AboutSection />
-      <AchievementsSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <TapeSection />
+        <ProjectsSection />
+        <ResearchSection />
+        <AboutSection />
+        <AchievementsSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

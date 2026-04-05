@@ -208,7 +208,7 @@ function DotComponent({
       animate={{
         opacity: [baseMinOpacity, baseMaxOpacity, baseMinOpacity],
       }}
-      className="absolute rounded-full bg-zinc-400 will-change-transform dark:bg-zinc-600"
+      className="absolute rounded-full transition-transform will-change-transform"
       initial={{ opacity: baseMinOpacity }}
       style={{
         width: dotSize,
@@ -221,6 +221,7 @@ function DotComponent({
           stiffness: 150,
           damping: 25,
         }),
+        backgroundColor: '#121212',
       }}
       transition={{
         opacity: {
@@ -297,7 +298,7 @@ export default function MouseEffectCard({
   return (
     <Card
       className={cn(
-        "relative w-full max-w-md overflow-hidden rounded-2xl border border-white/40 p-0 shadow-none dark:border-white/10",
+        "relative w-full max-w-md overflow-hidden rounded-none border-none p-0 shadow-none bg-white",
         className
       )}
     >
@@ -322,40 +323,33 @@ export default function MouseEffectCard({
 
         {topText && (
           <div className="absolute top-6 left-6 z-10">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-lg bg-white/60 blur-lg dark:bg-zinc-950/60" />
-              <div className="relative flex flex-col gap-1">
-                <p className="font-bold text-sm text-zinc-900 dark:text-white">
-                  {topText}
+            <div className="relative flex flex-col gap-1">
+              <p className="font-black uppercase tracking-widest text-xs text-[#121212]/50">
+                {topText}
+              </p>
+              {topSubtext && (
+                <p className="font-medium text-xs text-[#121212]/40">
+                  {topSubtext}
                 </p>
-                {topSubtext && (
-                  <p className="font-medium text-xs text-zinc-600 opacity-70 dark:text-zinc-400">
-                    {topSubtext}
-                  </p>
-                )}
-              </div>
+              )}
             </div>
           </div>
         )}
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-2">
           <div className="flex flex-col items-center gap-6">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-white/80 blur-2xl dark:bg-zinc-950/80" />
-              <h2 className="relative text-center font-bold text-4xl text-zinc-900 tracking-tight dark:text-white">
+            <div className="relative bg-white/90 border-4 border-[#121212] p-4 text-center" style={{ boxShadow: '4px 4px 0px 0px #121212' }}>
+              <h2 className="relative font-black uppercase text-3xl md:text-4xl text-[#121212] tracking-tight leading-none mb-2">
                 {title}
               </h2>
-            </div>
-            {(subtitle || children) && (
-              <div className="relative">
-                <div className="absolute inset-0 rounded-lg bg-white/60 blur-xl dark:bg-zinc-950/60" />
-                <p className="relative max-w-sm text-center font-medium text-base text-zinc-700 leading-relaxed dark:text-zinc-300">
+              {(subtitle || children) && (
+                <p className="relative max-w-xs text-center font-medium text-xs text-[#121212]/70 leading-relaxed uppercase tracking-wide">
                   {children || subtitle}
                 </p>
-              </div>
-            )}
-            <div className="mt-2 flex items-center gap-3">
-              <Button asChild className="rounded-full shadow-lg" size="lg">
+              )}
+            </div>
+            <div className="mt-2 flex items-center gap-4">
+              <Button asChild className="bauhaus-btn bauhaus-btn-red text-xs border-2 border-[#121212] shadow-[4px_4px_0_0_#121212]" size="lg">
                 <a
                   href={primaryCtaUrl}
                   onClick={(e) => {
@@ -370,7 +364,7 @@ export default function MouseEffectCard({
               {secondaryCtaText && (
                 <Button
                   asChild
-                  className="rounded-full"
+                  className="bauhaus-btn text-xs border-2 border-[#121212] bg-[#F0F0F0] text-[#121212] hover:bg-white"
                   size="lg"
                   variant="outline"
                 >
@@ -391,10 +385,9 @@ export default function MouseEffectCard({
         </div>
 
         {footerText && (
-          <div className="absolute right-0 bottom-6 left-0 z-10 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-white/60 blur-lg dark:bg-zinc-950/60" />
-              <p className="relative px-4 py-1 font-medium text-xs text-zinc-600 dark:text-zinc-400">
+          <div className="absolute right-0 bottom-6 left-0 z-10 flex justify-center pointer-events-none">
+            <div className="relative bg-white/90 border-2 border-[#121212]">
+              <p className="relative px-3 py-1 font-bold text-[10px] uppercase tracking-widest text-[#121212]">
                 {footerText}
               </p>
             </div>

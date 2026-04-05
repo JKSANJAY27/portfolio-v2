@@ -11,8 +11,7 @@ interface ResearchProject {
     highlights: string[];
     metrics: { label: string; value: string }[];
     tags: string[];
-    icon: string;
-    color: string;
+    index: string;
 }
 
 const researchProjects: ResearchProject[] = [
@@ -20,8 +19,8 @@ const researchProjects: ResearchProject[] = [
         title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment',
         shortTitle: 'Tamil Script VLT',
         organization: 'Vellore Institute of Technology',
-        period: '2025 – Present',
-        status: 'Patent Filing Stage',
+        period: '2025 – 2026',
+        status: 'Patent Published',
         description: 'Designed a cross-era Tamil inscription recognition system spanning Tamil-Brahmi, Vatteluttu, Grantha, and Modern Tamil scripts. Implemented Vision Transformer encoder + cross-attention Transformer decoder for end-to-end transliteration.',
         highlights: [
             'ViT encoder + cross-attention Transformer decoder architecture',
@@ -31,21 +30,20 @@ const researchProjects: ResearchProject[] = [
             '~8,000 curated inscription samples across 4 historical eras',
         ],
         metrics: [
-            { label: 'Character Error Rate', value: '5.12%' },
+            { label: 'Char Error Rate', value: '5.12%' },
             { label: 'Word Error Rate', value: '12.84%' },
             { label: 'Historical Eras', value: '4' },
             { label: 'Training Samples', value: '~8K' },
         ],
         tags: ['Vision Transformer', 'Cross-Attention', 'NLP', 'OCR', 'Deep Learning'],
-        icon: '📜',
-        color: 'from-violet-600 to-cyan-500',
+        index: '01',
     },
     {
         title: 'Personalized AI System for Color Vision Deficiency',
         shortTitle: 'CVD AI System',
         organization: 'Vellore Institute of Technology',
-        period: '2025 – Present',
-        status: 'Patent Filing Stage',
+        period: '2025 – 2026',
+        status: 'Patent Published',
         description: 'End-to-end AI system for personalized color perception modeling and adaptive garment recommendation for CVD users. Features psychophysical adaptive staircase algorithm and AR-based real-time accessibility support.',
         highlights: [
             'Psychophysical adaptive staircase algorithm for perceptual threshold estimation',
@@ -55,14 +53,13 @@ const researchProjects: ResearchProject[] = [
             'Real-time AR bounding box detection with audio feedback',
         ],
         metrics: [
-            { label: 'Technology Readiness', value: 'TRL-3' },
+            { label: 'Domain', value: 'Accessibility' },
             { label: 'Architecture', value: 'Multi-Stage' },
-            { label: 'AI Models', value: 'Mask R-CNN' },
+            { label: 'AI Model', value: 'Mask R-CNN' },
             { label: 'Axes Modeled', value: 'CIELAB a*/b*' },
         ],
         tags: ['Accessibility AI', 'Computer Vision', 'Mask R-CNN', 'Fuzzy Logic', 'AR'],
-        icon: '👁️',
-        color: 'from-pink-600 to-violet-500',
+        index: '02',
     },
     {
         title: 'UKIERI–SPARC Hydrogen Catalyst Validation',
@@ -78,83 +75,98 @@ const researchProjects: ResearchProject[] = [
             'Runner-up in research commercialization competition',
         ],
         metrics: [
-            { label: 'National Selection', value: '9/∞' },
-            { label: 'University', value: 'Heriot-Watt UK' },
+            { label: 'National Selection', value: 'Top 9' },
+            { label: 'University', value: 'Heriot-Watt' },
             { label: 'Program', value: 'SPARC/UKIERI' },
             { label: 'Competition', value: 'Runner-up' },
         ],
         tags: ['Electrochemistry', 'Hydrogen', 'Green Energy', 'Data Analysis', 'CV/LSV'],
-        icon: '⚗️',
-        color: 'from-emerald-600 to-cyan-500',
+        index: '03',
     },
 ];
 
+const metricAccents = ['#D02020', '#F0C020', '#1040C0', '#D02020'];
+
 export const ResearchSection = () => {
     return (
-        <section id="research" className="py-20 lg:py-32 relative">
-            {/* Background glow */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-600/5 rounded-full blur-3xl" />
+        <section id="research" className="bg-[#D02020] border-b-4 border-[#121212] relative overflow-hidden">
+
+            {/* Background dot grid */}
+            <div
+                className="absolute inset-0 pointer-events-none bauhaus-dot-grid-white"
+                style={{ backgroundSize: '20px 20px', opacity: 0.15 }}
+            />
+
+            {/* Section header */}
+            <div className="relative border-b-4 border-[#121212] bg-[#D02020]">
+                <div className="container py-10 lg:py-14 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+                    <div>
+                        <p className="text-xs font-black uppercase tracking-[0.2em] text-white/60 mb-2">Academic Work</p>
+                        <h2
+                            className="font-black uppercase text-white leading-none"
+                            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', letterSpacing: '-0.03em' }}
+                        >
+                            Research &amp;<br />Innovation
+                        </h2>
+                    </div>
+                    <p className="text-white/70 font-medium max-w-xs text-sm leading-relaxed">
+                        Focused on multimodal AI systems, accessibility technology, and cross-domain innovation.
+                        2 patents published · 1 international research exchange.
+                    </p>
+                </div>
             </div>
 
-            <div className="container relative">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <div className="inline-flex items-center gap-2 tech-badge mb-4">
-                        <span className="size-1.5 rounded-full bg-violet-400" />
-                        Research Work
-                    </div>
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mt-2">
-                        Research & <span className="text-gradient">Innovation</span>
-                    </h2>
-                    <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm">
-                        Focused on multimodal AI systems, accessibility technology, and cross-domain innovation.
-                        2 patents filed · 1 international research exchange.
-                    </p>
-                </motion.div>
+            {/* Research cards */}
+            <div className="container relative py-12 lg:py-16 flex flex-col gap-8">
+                {researchProjects.map((project, idx) => (
+                    <motion.div
+                        key={project.shortTitle}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.6, delay: idx * 0.1 }}
+                        className="bauhaus-card overflow-hidden relative"
+                    >
+                        {/* Top color stripe */}
+                        <div className="h-2 w-full bg-[#F0C020] border-b-4 border-[#121212]" />
 
-                {/* Research cards */}
-                <div className="flex flex-col gap-8">
-                    {researchProjects.map((project, idx) => (
-                        <motion.div
-                            key={project.shortTitle}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-80px' }}
-                            transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="glass-card p-8 shimmer-card cursor-target overflow-hidden relative"
-                        >
-                            {/* Top gradient line */}
-                            <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${project.color}`} />
-
-                            <div className="grid md:grid-cols-[1fr,auto] gap-6 items-start">
+                        <div className="p-6 md:p-8">
+                            {/* Header row */}
+                            <div className="flex flex-wrap items-start gap-4 mb-6">
+                                {/* Index number */}
+                                <div className="w-12 h-12 bg-[#121212] flex items-center justify-center font-black text-white text-lg shrink-0">
+                                    {project.index}
+                                </div>
                                 <div className="flex-1">
-                                    {/* Title row */}
-                                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                                        <span className="text-2xl">{project.icon}</span>
-                                        <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
+                                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                                        <span
+                                            className="px-3 py-0.5 text-xs font-black uppercase tracking-widest border-2 border-[#121212]"
+                                            style={{
+                                                backgroundColor: project.status === 'Patent Published' ? '#1040C0' : '#F0C020',
+                                                color: project.status === 'Patent Published' ? '#fff' : '#121212',
+                                            }}
+                                        >
                                             {project.status}
                                         </span>
-                                        <span className="text-xs text-white/30 font-mono">{project.period}</span>
+                                        <span className="text-xs text-[#121212]/50 font-bold uppercase tracking-wide">{project.period}</span>
                                     </div>
+                                    <h3 className="font-black text-[#121212] uppercase text-xl md:text-2xl leading-tight tracking-tight">
+                                        {project.shortTitle}
+                                    </h3>
+                                    <p className="text-[#D02020] font-bold text-sm mt-0.5">{project.organization}</p>
+                                    <p className="text-[#121212]/40 text-xs italic mt-1">{project.title}</p>
+                                </div>
+                            </div>
 
-                                    <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-1">{project.shortTitle}</h3>
-                                    <p className="text-violet-400 text-sm font-medium mb-1">{project.organization}</p>
-                                    <p className="text-xs text-white/40 italic mb-4 leading-tight">{project.title}</p>
-
-                                    <p className="text-white/60 text-sm leading-relaxed mb-5">{project.description}</p>
+                            <div className="grid md:grid-cols-[1fr,200px] gap-8">
+                                <div>
+                                    <p className="text-[#121212]/70 text-sm leading-relaxed mb-5 font-medium">{project.description}</p>
 
                                     {/* Highlights */}
-                                    <ul className="flex flex-col gap-1.5 mb-5">
+                                    <ul className="flex flex-col gap-2 mb-6">
                                         {project.highlights.map(h => (
-                                            <li key={h} className="flex items-start gap-2.5 text-sm text-white/65">
-                                                <span className={`mt-1.5 size-1.5 rounded-full flex-shrink-0 bg-gradient-to-r ${project.color}`} />
+                                            <li key={h} className="flex items-start gap-3 text-sm text-[#121212]/80">
+                                                <span className="mt-1.5 w-2 h-2 bg-[#D02020] shrink-0" />
                                                 {h}
                                             </li>
                                         ))}
@@ -163,52 +175,71 @@ export const ResearchSection = () => {
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2">
                                         {project.tags.map(tag => (
-                                            <span key={tag} className="tech-badge">{tag}</span>
+                                            <span key={tag} className="bauhaus-tag text-[#121212]">{tag}</span>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* Metrics column */}
-                                <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:w-44">
-                                    {project.metrics.map(m => (
-                                        <div key={m.label} className="metric-card text-center">
-                                            <div className={`text-xl font-bold font-mono bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
+                                {/* Metrics grid */}
+                                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 content-start">
+                                    {project.metrics.map((m, mi) => (
+                                        <div
+                                            key={m.label}
+                                            className="border-4 border-[#121212] p-3 text-center"
+                                            style={{ backgroundColor: metricAccents[mi % metricAccents.length] }}
+                                        >
+                                            <div
+                                                className="font-black text-xl leading-none"
+                                                style={{ color: metricAccents[mi % metricAccents.length] === '#F0C020' ? '#121212' : '#fff' }}
+                                            >
                                                 {m.value}
                                             </div>
-                                            <div className="text-[10px] text-white/40 mt-1 leading-tight">{m.label}</div>
+                                            <div
+                                                className="text-[10px] font-bold uppercase tracking-wide mt-1"
+                                                style={{ color: metricAccents[mi % metricAccents.length] === '#F0C020' ? '#121212' : 'rgba(255,255,255,0.7)' }}
+                                            >
+                                                {m.label}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                        </motion.div>
-                    ))}
-                </div>
+                        </div>
+                    </motion.div>
+                ))}
 
-                {/* Research output */}
+                {/* Research Output box */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="mt-12 glass-card p-6 border-gradient"
+                    className="bg-[#1040C0] border-4 border-[#121212] p-8"
+                    style={{ boxShadow: '8px 8px 0px 0px rgba(0,0,0,0.3)' }}
                 >
-                    <h3 className="font-display text-lg font-bold text-white mb-4">📄 Research Output</h3>
+                    <h3 className="font-black uppercase text-white text-2xl tracking-tight mb-6">
+                        Research Output
+                    </h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                         {[
-                            { type: 'Patent (2025)', title: 'Wardrobe Colour Diversity & Personalized CVD Gamut Modeling System', status: 'Filing Stage' },
-                            { type: 'Patent (2025)', title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment', status: 'Filing Stage' },
-                            { type: 'Manuscript', title: 'Accessibility AI Systems — in preparation for journal submission', status: 'In Progress' },
-                            { type: 'Manuscript', title: 'Epigraphic AI Systems — in preparation for journal submission', status: 'In Progress' },
+                            { type: 'Patent (2025)', title: 'Wardrobe Colour Diversity & Personalized CVD Gamut Modeling System', status: 'Published' },
+                            { type: 'Patent (2025)', title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment', status: 'Published' },
                         ].map(output => (
-                            <div key={output.title} className="flex items-start gap-3 p-4 rounded-xl bg-white/3 border border-white/5">
-                                <div className="flex-shrink-0">
-                                    <span className={`text-[11px] whitespace-nowrap font-bold px-2 py-1 rounded-full ${output.status === 'Filing Stage' ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/25' : 'bg-yellow-500/15 text-yellow-400 border border-yellow-500/25'}`}>
+                            <div key={output.title} className="bg-white border-4 border-[#121212] p-4 flex items-start gap-3">
+                                <div className="shrink-0">
+                                    <span
+                                        className="text-[11px] font-black px-2 py-1 uppercase tracking-wider border-2 border-[#121212]"
+                                        style={{
+                                            backgroundColor: output.status === 'Published' ? '#1040C0' : output.status === 'In Progress' ? '#F0C020' : '#D02020',
+                                            color: output.status === 'In Progress' ? '#121212' : '#fff',
+                                        }}
+                                    >
                                         {output.status}
                                     </span>
                                 </div>
                                 <div>
-                                    <p className="text-[10px] text-violet-400 font-semibold uppercase tracking-wide">{output.type}</p>
-                                    <p className="text-xs text-white/60 mt-1 leading-relaxed">{output.title}</p>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-[#1040C0] mb-1">{output.type}</p>
+                                    <p className="text-xs text-[#121212]/70 leading-relaxed font-medium">{output.title}</p>
                                 </div>
                             </div>
                         ))}
