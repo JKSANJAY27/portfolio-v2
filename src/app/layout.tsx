@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sanjay J K — AI Engineer & Software Engineer",
-  description: "AI Engineer & Software Engineer at VIT (CGPA 9.45) — building production LLM systems, Graph RAG pipelines, and full-stack applications. GATE CSE 2026 AIR 1603. 2 Patents Published. UKIERI 2025 Scholar. Judges' Choice — Sankalp 2026.",
+  description: "AI Engineer & Software Engineer at VIT (CGPA 9.34) — building production LLM systems, Graph RAG pipelines, and full-stack applications. GATE CSE 2026 AIR 1603. 2 Patents Published. UKIERI 2025 Scholar. Judges' Choice — Sankalp 2026.",
   keywords: [
     "Sanjay J K", "AI Engineer", "Software Engineer", "Full Stack Developer",
     "LLM Systems", "Graph RAG", "Production AI", "VIT Vellore",

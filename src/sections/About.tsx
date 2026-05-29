@@ -38,7 +38,7 @@ const SummaryTab = () => (
     </h3>
     <p className="text-[#121212]/70 text-sm leading-relaxed mb-3 font-medium">
       <span className="text-[#121212] font-black">AI Engineer &amp; Software Engineer</span> — CS student at{' '}
-      <span className="text-[#D02020] font-black">VIT (CGPA 9.45)</span> building production AI systems,
+      <span className="text-[#D02020] font-black">VIT (CGPA 9.34)</span> building production AI systems,
       LLM pipelines, Graph RAG applications, and full-stack products that solve real-world problems.
     </p>
     <p className="text-[#121212]/60 text-sm leading-relaxed mb-6 font-medium">
@@ -48,7 +48,7 @@ const SummaryTab = () => (
     </p>
     <div className="mt-auto grid grid-cols-3 gap-3">
       {[
-        { val: '9.45', label: 'CGPA at VIT', accent: '#D02020' },
+        { val: '9.34', label: 'CGPA at VIT', accent: '#D02020' },
         { val: '670', label: 'GATE Score', accent: '#1040C0' },
         { val: '2027', label: 'Expected Grad', accent: '#F0C020' },
       ].map(s => (
@@ -139,7 +139,7 @@ const EducationTab = () => (
         <p className="text-[#D02020] text-xs mt-0.5 font-bold uppercase tracking-widest">Vellore Institute of Technology</p>
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-[#121212]/50 font-bold">2023 – 2027</span>
-          <span className="text-xs font-black text-[#121212] bg-[#F0C020] px-2 py-0.5 border-2 border-[#121212]">CGPA: 9.45</span>
+          <span className="text-xs font-black text-[#121212] bg-[#F0C020] px-2 py-0.5 border-2 border-[#121212]">CGPA: 9.34</span>
         </div>
       </div>
       <div className="border-l-4 border-[#1040C0] border-y-2 border-r-2 border-[#121212] p-4 bg-white">

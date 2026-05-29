@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import RotatingText from '@/components/animations/RotatingText';
 
 const stats = [
-  { value: '9.45', label: 'CGPA at VIT', suffix: '/10' },
+  { value: '9.34', label: 'CGPA at VIT', suffix: '/10' },
   { value: '670', label: 'GATE Score', suffix: '' },
   { value: '2', label: 'Patents Published', suffix: '' },
   { value: '5×', label: 'Hackathon Finalist', suffix: '' },
@@ -138,7 +138,7 @@ export const HeroSection = () => {
             {/* Description */}
             <p className="text-[#121212]/70 text-base md:text-lg leading-relaxed max-w-lg mb-10 font-medium">
               <span className="text-[#121212] font-black">AI Engineer &amp; Software Engineer</span> — CS student at{' '}
-              <span className="text-[#D02020] font-black">VIT (CGPA 9.45)</span> building production AI systems,
+              <span className="text-[#D02020] font-black">VIT (CGPA 9.34)</span> building production AI systems,
               full-stack applications, and LLM pipelines that make real-world impact.
               GATE CSE 2026 · AIR 1603 · 2 Patents Published · UKIERI Scholar.
             </p>
