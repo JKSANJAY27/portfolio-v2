@@ -82,63 +82,6 @@ const featuredProjects = [
     image: '/projects/graphreasoner.jfif',
     accent: '#1040C0',
   },
-  {
-    category: 'Full Stack • AI/ML',
-    index: '05',
-    year: '2025',
-    title: 'SwarmIQ',
-    subtitle: 'Social Simulation Engine with Local LLMs + GraphRAG',
-    description: 'A living simulation system that models how opinions form, evolve, and spread across agent networks using entirely local LLMs (Ollama) and a custom GraphRAG pipeline. Each agent has a unique persona and evolving opinions; emergent phenomena like echo chambers arise naturally.',
-    results: [
-      'GraphRAG pipeline: PDF/Markdown → knowledge graph → simulation world',
-      'AI-generated Big Five personalities with episodic + semantic memory',
-      'Async simulation engine with procedural fallback on LLM failure',
-      'Interactive analyst chatbot grounded in structured simulation reports',
-    ],
-    stack: ['Python', 'Ollama', 'GraphRAG', 'NetworkX', 'FastAPI', 'Vue.js'],
-    link: 'https://github.com/JKSANJAY27/SwarmIQ',
-    github: 'https://github.com/JKSANJAY27/SwarmIQ',
-    image: '/projects/swarmiq.jfif',
-    accent: '#D02020',
-  },
-  {
-    category: 'Research / ML',
-    index: '06',
-    year: '2025',
-    title: 'Basketball Video Analysis',
-    subtitle: 'Computer Vision Pipeline',
-    description: 'Player & ball detection using YOLO models with real-time court overlays and team assignment via zero-shot learning. Live performance analytics dashboard with event detection.',
-    results: [
-      'YOLO-based player & ball detection',
-      'Real-time court overlays & event detection',
-      'Zero-shot team assignment learning',
-      'Live performance analytics dashboard',
-    ],
-    stack: ['Python', 'YOLO', 'OpenCV', 'PyTorch'],
-    link: 'https://github.com/JKSANJAY27/Basketball-Analysis',
-    github: 'https://github.com/JKSANJAY27/Basketball-Analysis',
-    image: '/projects/basketball.png',
-    accent: '#F0C020',
-  },
-  {
-    category: 'Full Stack',
-    index: '07',
-    year: '2025',
-    title: 'Language Exchange Platform',
-    subtitle: 'Dialingo',
-    description: 'Global platform for 1-on-1 and group video calls with JWT authentication, real-time messaging, and screen sharing. Supports 30+ UI themes enabling seamless cross-cultural collaboration at scale.',
-    results: [
-      '1-on-1 & group video calls via WebRTC',
-      'JWT auth + real-time messaging',
-      '30+ UI themes, Zustand state management',
-      'TanStack Query for seamless data fetching',
-    ],
-    stack: ['React', 'Express.js', 'MongoDB', 'WebRTC', 'Zustand'],
-    link: 'https://dialingo.onrender.com/',
-    github: 'https://github.com/JKSANJAY27',
-    image: '/projects/dialingo.png',
-    accent: '#1040C0',
-  },
 ];
 
 /* ── Hackathon Projects ── */
@@ -188,10 +131,28 @@ const hackathonProjects = [
 const ProjectImageOrBlock = ({ image, accent, title }: { image: string; accent: string; title: string }) => {
   if (image) {
     return (
-      <div className="absolute inset-0 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={title} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-[#EAEAEA] flex items-center justify-center p-4 sm:p-6 md:p-8 select-none">
+        {/* Mock browser window */}
+        <div className="w-full h-full border-4 border-[#121212] bg-[#121212] shadow-[6px_6px_0px_0px_#121212] flex flex-col overflow-hidden">
+          {/* Browser header */}
+          <div className="h-8 border-b-4 border-[#121212] bg-white flex items-center px-3 gap-1.5 shrink-0">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D02020] border border-[#121212]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#F0C020] border border-[#121212]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#1040C0] border border-[#121212]" />
+            <div className="ml-4 flex-1 bg-[#F0F0F0] border border-[#121212] h-4 text-[9px] font-bold text-[#121212]/50 px-2 flex items-center overflow-hidden whitespace-nowrap select-none">
+              {title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.sanjay.dev
+            </div>
+          </div>
+          {/* Browser content */}
+          <div className="flex-1 bg-[#1A1A1D] relative flex items-center justify-center overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={image} 
+              alt={title} 
+              className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-500" 
+            />
+          </div>
+        </div>
       </div>
     );
   }
