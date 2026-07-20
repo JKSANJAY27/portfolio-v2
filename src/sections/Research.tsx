@@ -16,6 +16,30 @@ interface ResearchProject {
 
 const researchProjects: ResearchProject[] = [
     {
+        title: 'Physics-Augmented Machine Learning Digital Twin for Convergent Truncated Cone Thermosyphon Heat Pipe',
+        shortTitle: 'Thermosyphon ML Twin',
+        organization: 'SET 2026 Conference (Kuala Lumpur, Malaysia)',
+        period: 'August 13 – 15, 2026',
+        status: 'Accepted / Presenting',
+        description: 'Developed an integrated physics-augmented ML digital twin framework from experimental datasets of a Convergent Truncated Cone thermosyphon heat pipe for lithium-ion battery thermal management.',
+        highlights: [
+            'Physics-augmented ML digital twin with seven integrated modules for passive thermal management modeling',
+            'Random Forest Classifier achieving steady-state detection with an F1-score of 97.85% ± 2.63% under leave-one-run-out CV',
+            'Surrogate models predicting condenser heat transfer coefficient (R² = 0.914) & total thermal resistance (R² = 0.889) on unseen geometries',
+            'Active learning via Gaussian Process Regression with uncertainty-thresholded Latin Hypercube Sampling generating synthetic records',
+            'Dry-out early warning system coupling an Isolation Forest with a thermodynamic physics gate',
+            'Uncovered power-dependent geometric crossover transitioning optimal design across thin-film convection and vigorous nucleate boiling',
+        ],
+        metrics: [
+            { label: 'Steady-State F1', value: '97.85%' },
+            { label: 'Condenser HTC R²', value: '0.914' },
+            { label: 'Thermal Res R²', value: '0.889' },
+            { label: 'Venue', value: 'SET 2026' },
+        ],
+        tags: ['Physics-Augmented ML', 'Digital Twin', 'Thermal Management', 'Anomaly Detection', 'Regression'],
+        index: '01',
+    },
+    {
         title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment',
         shortTitle: 'Tamil Script VLT',
         organization: 'Vellore Institute of Technology',
@@ -36,7 +60,7 @@ const researchProjects: ResearchProject[] = [
             { label: 'Training Samples', value: '~8K' },
         ],
         tags: ['Vision Transformer', 'Cross-Attention', 'NLP', 'OCR', 'Deep Learning'],
-        index: '01',
+        index: '02',
     },
     {
         title: 'Personalized AI System for Color Vision Deficiency',
@@ -59,7 +83,7 @@ const researchProjects: ResearchProject[] = [
             { label: 'Axes Modeled', value: 'CIELAB a*/b*' },
         ],
         tags: ['Accessibility AI', 'Computer Vision', 'Mask R-CNN', 'Fuzzy Logic', 'AR'],
-        index: '02',
+        index: '03',
     },
     {
         title: 'UKIERI–SPARC Hydrogen Catalyst Validation',
@@ -81,7 +105,7 @@ const researchProjects: ResearchProject[] = [
             { label: 'Competition', value: 'Runner-up' },
         ],
         tags: ['Electrochemistry', 'Hydrogen', 'Green Energy', 'Data Analysis', 'CV/LSV'],
-        index: '03',
+        index: '04',
     },
 ];
 
@@ -111,7 +135,7 @@ export const ResearchSection = () => {
                     </div>
                     <p className="text-white/70 font-medium max-w-xs text-sm leading-relaxed">
                         Focused on multimodal AI systems, accessibility technology, and cross-domain innovation.
-                        2 patents published · 1 international research exchange.
+                        1 conference presentation · 2 patents published · 1 international research exchange.
                     </p>
                 </div>
             </div>
@@ -220,8 +244,9 @@ export const ResearchSection = () => {
                     <h3 className="font-black uppercase text-white text-2xl tracking-tight mb-6">
                         Research Output
                     </h3>
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-3 gap-4">
                         {[
+                            { type: 'Conference (SET 2026)', title: 'Physics-Augmented Machine Learning Digital Twin for Convergent Truncated Cone Thermosyphon Heat Pipe', status: 'Accepted' },
                             { type: 'Patent (2025)', title: 'Wardrobe Colour Diversity & Personalized CVD Gamut Modeling System', status: 'Published' },
                             { type: 'Patent (2025)', title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment', status: 'Published' },
                         ].map(output => (
@@ -230,8 +255,8 @@ export const ResearchSection = () => {
                                     <span
                                         className="text-[11px] font-black px-2 py-1 uppercase tracking-wider border-2 border-[#121212]"
                                         style={{
-                                            backgroundColor: output.status === 'Published' ? '#1040C0' : output.status === 'In Progress' ? '#F0C020' : '#D02020',
-                                            color: output.status === 'In Progress' ? '#121212' : '#fff',
+                                            backgroundColor: output.status === 'Published' ? '#1040C0' : output.status === 'Accepted' ? '#F0C020' : '#D02020',
+                                            color: output.status === 'Accepted' ? '#121212' : '#fff',
                                         }}
                                     >
                                         {output.status}

@@ -131,7 +131,7 @@ const EducationTab = () => (
   <div className="p-6 h-full flex flex-col overflow-y-auto">
     <h3 className="font-black uppercase text-[#121212] text-lg tracking-tight mb-4 flex items-center gap-3">
       <span className="w-4 h-4 bg-[#D02020]" />
-      Education
+      Education &amp; Certifications
     </h3>
     <div className="space-y-3 mb-6">
       <div className="border-l-4 border-[#D02020] border-y-2 border-r-2 border-[#121212] p-4 bg-white">
@@ -140,6 +140,14 @@ const EducationTab = () => (
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-[#121212]/50 font-bold">2023 – 2027</span>
           <span className="text-xs font-black text-[#121212] bg-[#F0C020] px-2 py-0.5 border-2 border-[#121212]">CGPA: 9.34</span>
+        </div>
+      </div>
+      <div className="border-l-4 border-[#F0C020] border-y-2 border-r-2 border-[#121212] p-4 bg-white">
+        <p className="font-black text-sm text-[#121212] uppercase tracking-wide">Gen AI using IBM Watsonx</p>
+        <p className="text-[#1040C0] text-xs mt-0.5 font-bold uppercase tracking-widest">IBM Professional Certification</p>
+        <div className="flex items-center justify-between mt-2">
+          <span className="text-xs text-[#121212]/50 font-bold">Issued 2026</span>
+          <span className="text-xs font-black text-white bg-[#D02020] px-2 py-0.5 border-2 border-[#121212] uppercase tracking-wide">Verified</span>
         </div>
       </div>
       <div className="border-l-4 border-[#1040C0] border-y-2 border-r-2 border-[#121212] p-4 bg-white">
@@ -176,7 +184,7 @@ const aboutTabs = [
   { id: 'summary', title: 'Summary', color: 'bg-[#D02020] hover:bg-[#B01818]', cardContent: <SummaryTab /> },
   { id: 'experience', title: 'Experience', color: 'bg-[#1040C0] hover:bg-[#0D35A0]', cardContent: <ExperienceTab /> },
   { id: 'skills', title: 'Skills', color: 'bg-[#F0C020] hover:bg-[#D8A818]', cardContent: <SkillsTab /> },
-  { id: 'education', title: 'Education', color: 'bg-[#121212] hover:bg-[#2a2a2a]', cardContent: <EducationTab /> },
+  { id: 'education', title: 'Education & Certs', color: 'bg-[#121212] hover:bg-[#2a2a2a]', cardContent: <EducationTab /> },
 ];
 
 export const AboutSection = () => {
