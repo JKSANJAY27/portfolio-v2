@@ -140,7 +140,7 @@ export const HeroSection = () => {
               <span className="text-[#121212] font-black">AI Engineer &amp; Software Engineer</span> — CS student at{' '}
               <span className="text-[#D02020] font-black">VIT (CGPA 9.34)</span> building production AI systems,
               full-stack applications, and LLM pipelines that make real-world impact.
-              GATE CSE 2026 · AIR 1603 · 2 Patents Published · UKIERI Scholar.
+              SET2026 Speaker (Malaysia 🇲🇾) · GATE CSE 2026 (AIR 1603) · 2 Patents · UKIERI Scholar.
             </p>
 
             {/* CTAs */}

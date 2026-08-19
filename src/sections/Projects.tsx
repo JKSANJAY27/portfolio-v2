@@ -45,20 +45,21 @@ const featuredProjects = [
     accent: '#D02020',
   },
   {
-    category: 'Full Stack • AI Systems',
+    category: 'Full Stack • AI Systems • Live Production',
     index: '03',
     year: '2026',
-    title: 'NextUp.ai',
-    subtitle: 'AI-Powered Placement Intelligence Platform',
-    description: 'A privacy-first, zero-knowledge placement tracker that reads campus recruitment emails, detects shortlists, verifies eligibility, and tailors ATS-optimized resumes using self-hosted LLMs, run on free-tier infrastructure.',
+    title: 'NextUp VIT',
+    subtitle: 'Free Campus Placement & CDC Email Intelligence Tracker (100+ Active Users)',
+    description: 'The free campus placement tracker built by VIT students, for VIT students. Automatically ingests CDC emails, parses drive details via self-hosted LLMs, detects shortlists using zero-knowledge blind indexes, verifies multi-tier eligibility, and tailors ATS-optimized resumes — deployed live and actively used by 100+ VIT students.',
     results: [
-      'Zero-Knowledge Privacy: Browser-based AES-256-GCM encryption + peppered HMAC blind indexes for shortlist matching',
-      'Email Intelligence: Self-hosted LLM (Qwen 3B) parser with deterministic grounding gates filtering out hallucinations',
-      'ATS Resume Tailoring: Relevance-gated project selection, micro-batched LLM passes, and a LaTeX-quality PyMuPDF renderer',
-      'Reliable Stage Machine: Event-driven tracking guarding stages from duplicate lists or roster list false positives',
+      '100+ Active Users: Deployed live and actively processing campus placement drives for VIT Vellore students',
+      'Zero-Knowledge Privacy: Client-side AES-256-GCM encryption + peppered HMAC blind indexes for shortlist matching without server reading student IDs',
+      'Email Intelligence: Self-hosted LLM (Qwen 3B) email parser with deterministic grounding gates re-verifying extracted facts against source text',
+      'ATS Resume Tailoring: Relevance-gated project selection, micro-batched LLM passes, ATS vs Readability dual-scoring, and LaTeX-quality PyMuPDF renderer',
     ],
-    stack: ['Next.js 14', 'FastAPI', 'PostgreSQL', 'Redis', 'WebCrypto', 'Ollama', 'PyMuPDF', 'Docker'],
+    stack: ['Next.js 14', 'FastAPI', 'PostgreSQL', 'Redis', 'WebCrypto', 'Ollama (Qwen 3B)', 'PyMuPDF', 'Docker'],
     link: 'https://project-next-up.vercel.app/',
+    apiDocs: 'https://project-nextup.onrender.com/docs',
     github: 'https://github.com/JKSANJAY27/Project-NextUp/',
     image: '/projects/nextup.png',
     accent: '#F0C020',
@@ -251,6 +252,16 @@ export const ProjectsSection = () => {
                   >
                     View Live ↗
                   </a>
+                  {project.apiDocs && (
+                    <a
+                      href={project.apiDocs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bauhaus-btn bauhaus-btn-outline text-xs"
+                    >
+                      API Docs ⚡
+                    </a>
+                  )}
                   <a
                     href={project.github}
                     target="_blank"

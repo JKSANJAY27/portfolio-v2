@@ -42,8 +42,8 @@ const SummaryTab = () => (
       LLM pipelines, Graph RAG applications, and full-stack products that solve real-world problems.
     </p>
     <p className="text-[#121212]/60 text-sm leading-relaxed mb-6 font-medium">
-      Designed and deployed applications used by <span className="text-[#121212] font-black">200+ users</span>.{' '}
-      Pursuing research in multimodal AI with <span className="text-[#121212] font-black">2 patents published</span>.
+      Designed and deployed applications used by <span className="text-[#121212] font-black">300+ active users</span> (including NextUp placement tracker).{' '}
+      Presented research at <span className="text-[#121212] font-black">SET2026 (Kuala Lumpur, Malaysia)</span> with <span className="text-[#121212] font-black">2 patents published</span>.
       Secured <span className="text-[#121212] font-black">GATE CSE 2026 (AIR 1603)</span> — seeking internship &amp; full-time roles in AI Engineering and Software Engineering.
     </p>
     <div className="mt-auto grid grid-cols-3 gap-3">

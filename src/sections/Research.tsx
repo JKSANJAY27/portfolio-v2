@@ -12,32 +12,39 @@ interface ResearchProject {
     metrics: { label: string; value: string }[];
     tags: string[];
     index: string;
+    images?: { src: string; caption: string }[];
 }
 
 const researchProjects: ResearchProject[] = [
     {
         title: 'Physics-Augmented Machine Learning Digital Twin for Convergent Truncated Cone Thermosyphon Heat Pipe',
-        shortTitle: 'Thermosyphon ML Twin',
-        organization: 'SET 2026 Conference (Kuala Lumpur, Malaysia)',
-        period: 'August 13 – 15, 2026',
-        status: 'Accepted / Presenting',
-        description: 'Developed an integrated physics-augmented ML digital twin framework from experimental datasets of a Convergent Truncated Cone thermosyphon heat pipe for lithium-ion battery thermal management.',
+        shortTitle: 'Thermosyphon ML Digital Twin',
+        organization: '22nd Int. Conf. on Sustainable Energy Technologies (SET2026 / WSSET) · Kuala Lumpur, Malaysia 🇲🇾',
+        period: 'August 2026',
+        status: 'Presented (Kuala Lumpur)',
+        description: 'Abstract selected and presented at the 22nd International Conference on Sustainable Energy Technologies (SET2026) by WSSET in Kuala Lumpur, Malaysia. Research originated from selection for the UKIERI-SPARC International Research Programme at Heriot-Watt University, Scotland, and developed into a physics-augmented digital twin for performance prediction, design optimization, and safety monitoring of convergent truncated cone thermosyphon heat pipes.',
         highlights: [
+            'Presented research paper at the 22nd International Conference on Sustainable Energy Technologies (SET2026) in Kuala Lumpur, Malaysia 🇲🇾',
+            'Full Research Progression: UKIERI-SPARC Scholar @ Heriot-Watt University (Scotland) → Research Paper → SET2026 Presentation',
+            'Co-authored & presented alongside Dr. Sakthivadivel D, Associate Professor & Assistant Director, School of Mechanical Engineering, VIT',
+            'Key Scientific Discovery: Optimal thermosyphon geometry changes dynamically with heat input, highlighting the necessity of adaptive operating design',
             'Physics-augmented ML digital twin with seven integrated modules for passive thermal management modeling',
             'Random Forest Classifier achieving steady-state detection with an F1-score of 97.85% ± 2.63% under leave-one-run-out CV',
             'Surrogate models predicting condenser heat transfer coefficient (R² = 0.914) & total thermal resistance (R² = 0.889) on unseen geometries',
-            'Active learning via Gaussian Process Regression with uncertainty-thresholded Latin Hypercube Sampling generating synthetic records',
-            'Dry-out early warning system coupling an Isolation Forest with a thermodynamic physics gate',
-            'Uncovered power-dependent geometric crossover transitioning optimal design across thin-film convection and vigorous nucleate boiling',
+            'Dry-out early warning safety system coupling Isolation Forest with a thermodynamic physics gate',
         ],
         metrics: [
-            { label: 'Steady-State F1', value: '97.85%' },
-            { label: 'Condenser HTC R²', value: '0.914' },
-            { label: 'Thermal Res R²', value: '0.889' },
-            { label: 'Venue', value: 'SET 2026' },
+            { label: 'Conference', value: 'SET2026' },
+            { label: 'Location', value: 'Malaysia 🇲🇾' },
+            { label: 'Steady F1', value: '97.85%' },
+            { label: 'Condenser R²', value: '0.914' },
         ],
-        tags: ['Physics-Augmented ML', 'Digital Twin', 'Thermal Management', 'Anomaly Detection', 'Regression'],
+        tags: ['Physics-Augmented ML', 'Digital Twin', 'Thermosyphon', 'SET2026', 'UKIERI-SPARC', 'Heriot-Watt'],
         index: '01',
+        images: [
+            { src: '/set2026.png', caption: 'Presenting at SET2026 in Kuala Lumpur, Malaysia 🇲🇾' },
+            { src: '/set2026certificate.png', caption: 'Official Certificate of Presentation — SET2026 (WSSET)' },
+        ],
     },
     {
         title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment',
@@ -202,6 +209,30 @@ export const ResearchSection = () => {
                                             <span key={tag} className="bauhaus-tag text-[#121212]">{tag}</span>
                                         ))}
                                     </div>
+
+                                    {/* Project Images (e.g. SET2026 conference & certificate) */}
+                                    {project.images && project.images.length > 0 && (
+                                        <div className="mt-6 pt-4 border-t-2 border-[#121212]/20 grid sm:grid-cols-2 gap-4">
+                                            {project.images.map((img, i) => (
+                                                <div key={i} className="border-4 border-[#121212] bg-[#121212] flex flex-col overflow-hidden group shadow-[4px_4px_0px_0px_#121212]">
+                                                    <div className="relative h-44 overflow-hidden bg-[#1A1A1D]">
+                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                        <img 
+                                                            src={img.src} 
+                                                            alt={img.caption} 
+                                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                        />
+                                                    </div>
+                                                    <div className="p-2.5 bg-white border-t-2 border-[#121212] text-[10px] font-bold text-[#121212] uppercase tracking-wide flex items-center justify-between gap-2">
+                                                        <span className="truncate">{img.caption}</span>
+                                                        <a href={img.src} target="_blank" rel="noopener noreferrer" className="text-[#D02020] font-black shrink-0 hover:underline">
+                                                            Full ↗
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Metrics grid */}
@@ -246,7 +277,7 @@ export const ResearchSection = () => {
                     </h3>
                     <div className="grid sm:grid-cols-3 gap-4">
                         {[
-                            { type: 'Conference (SET 2026)', title: 'Physics-Augmented Machine Learning Digital Twin for Convergent Truncated Cone Thermosyphon Heat Pipe', status: 'Accepted' },
+                            { type: 'Conference Presentation (SET2026)', title: 'Physics-Augmented ML Digital Twin for Thermosyphon Heat Pipe — Presented in Kuala Lumpur, Malaysia 🇲🇾', status: 'Presented' },
                             { type: 'Patent (2025)', title: 'Wardrobe Colour Diversity & Personalized CVD Gamut Modeling System', status: 'Published' },
                             { type: 'Patent (2025)', title: 'Pan-Chronological Vision–Language Transformer for Tamil Script Decipherment', status: 'Published' },
                         ].map(output => (
@@ -255,8 +286,8 @@ export const ResearchSection = () => {
                                     <span
                                         className="text-[11px] font-black px-2 py-1 uppercase tracking-wider border-2 border-[#121212]"
                                         style={{
-                                            backgroundColor: output.status === 'Published' ? '#1040C0' : output.status === 'Accepted' ? '#F0C020' : '#D02020',
-                                            color: output.status === 'Accepted' ? '#121212' : '#fff',
+                                            backgroundColor: output.status === 'Published' ? '#1040C0' : output.status === 'Presented' ? '#F0C020' : '#D02020',
+                                            color: output.status === 'Presented' ? '#121212' : '#fff',
                                         }}
                                     >
                                         {output.status}
